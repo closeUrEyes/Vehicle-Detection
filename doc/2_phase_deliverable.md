@@ -1,6 +1,16 @@
 # 第二周阶段成果
 
+GitHub 上建立项目，并用 git 管理。
 
+<img src="./reference image/GitHub.png"/>
+
+在 Tinymind 上建立模型，代码使用。
+
+<img src="./reference image/tinymind_pj.png"/>
+
+上传数据集，并在模型中使用。
+
+<img src="./reference image/dataset.png"/>
 
 ## 2.1 训练数据处理
 

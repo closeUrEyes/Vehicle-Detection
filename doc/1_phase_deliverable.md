@@ -134,11 +134,11 @@ TFRecord 中，'image/class/label' 即为图片的标签（型号）。
 
 共随机抽取了 10 张图片，图片中心区域大部分都只有一辆车，但个别有多辆车。
 
-![IMG5_434x320_Label_526](./reference image/IMG5_434x320_Label_526.jpg)
+<img src="./reference image/IMG5_434x320_Label_526.jpg" />
 
 ### 3.4 确认可能应用的变换
 
-数据增广（augmentation）：平移、旋转、裁切等。
+数据增广（augmentation）：裁切（平移）、水平翻转、（旋转、）饱和与平衡变换等。
 
 ## 4.	探索许多不同模型，初步选出最好的
 
@@ -171,7 +171,7 @@ TFRecord 中，'image/class/label' 即为图片的标签（型号）。
 
 可以明显地看出，SSD（Single Shot multibox Detector） 检测方法在速度上的优势，尤其是基础的特征提取网络采用 Google 针对嵌入式设备提出的一种轻量级的深层神经网络 — MobileNets 时。而基于 Region Proposal 的 Faster R-CNN 和 R-FCN 方法在 mAP 上还是还是领先很多。
 
-![tradeoff](./reference image/tradeoff.png)
+<img src="./reference image/tradeoff.png" />
 
 在检测模型选择上，主要是做 Speed 与 mAP 之间的 tradeoff。从表中及 tradeoff 做专门比较的论文中可以看到 Resnet 101 + 100 proposal Faster RCNN 模型在速度与平均查准率之间取得了一个最好的平衡，在本项目中也推荐使用此方法（下载 faster_rcnn_resnet101_lowproposals_coco 预训练模型）。
 
@@ -187,7 +187,7 @@ TFRecord 中，'image/class/label' 即为图片的标签（型号）。
 
 其中 Selective Search 采用的是超像素合并的思路。Bounding-box regressors 采用的是 Linear。
 
-![img](./reference image/R-CNN.png)
+<img src="./reference image/R-CNN.png" />
 
 #### Fast R-CNN
 
@@ -211,7 +211,7 @@ $smooth_{L1}(x) = \begin{cases}\begin{matrix}{0.5 x^2}, & if\;|x|<1 \\ |x|-0.5, 
 
 ROI Pooling 之后用 **SVD 分解**然后忽略次要成分，减小了全连接层计算量。
 
-![img](./reference image/Fast R-CNN.png)
+<img src="./reference image/Fast R-CNN.png" />
 
 <img src="./reference image/ROI Pooling.png" style="zoom:40%" />
 
@@ -233,9 +233,9 @@ Faster R-CNN 中 **Region Proposal Networks（RPN）**被提出来替代Selectiv
 
 **D.** 经过 NMS 和分数从大到小排序筛选出有效的物体框，从中随机选取作为一个 batch。然后通过 ROI Pooling 进行分类的同时，会进一步对物体框的位置及大小进行回归。两个任务的 loss 放一起实现了端到端的训练。
 
-![img](./reference image/RPN.png)
+<img src="./reference image/RPN.png" />
 
-![img](./reference image/Faster R-CNN.png)
+<img src="./reference image/Faster R-CNN.png" />
 
 #### R-FCN
 
@@ -263,7 +263,7 @@ R-FCN 能同时处理位置可变性（location variance，无论哪个位置都
 
 <img src="./reference image/R-FCN_meta.png" style="zoom:60%"/>
 
-![img](./reference image/R-FCN.png)
+<img src="./reference image/R-FCN.png" />
 
 ### 4.3 基于 Regression 的 Single Shot 系列物体检测方法
 
@@ -281,7 +281,7 @@ R-FCN 能同时处理位置可变性（location variance，无论哪个位置都
 
 **实现：**一幅图片首先缩放为一个正方形的图片（448×448），然后送进一个 CNN，到最后一层特征图时，接两层全连接，输出（并 reshape）是 7×7×30（B=2，C=20）。最后从这 7×7×30 张量中提取出来的物体框和类别的预测信息经过 NMS，就得到了最终的物体检测结果。
 
-![YOLO](./reference image/YOLO.png)
+<img src="./reference image/YOLO.png" />
 
 #### SSD: Single Shot MultiBox Detector
 
@@ -295,9 +295,9 @@ R-FCN 能同时处理位置可变性（location variance，无论哪个位置都
 
 比起 YOLO，输入分辨率更低，但感受野精细程度更高，而且默认物体框的数量高出两个数量级，结果就是执行速度和精度的双双提升。
 
-![SSD anchor](./reference image/SSD anchor.png)
+<img src="./reference image/SSD anchor.png" />
 
-![img](./reference image/SSD.png)
+<img src="./reference image/SSD.png" style="zoom:50%"/>
 
 
 
@@ -309,7 +309,7 @@ Inception 模块的基本思想源于 NIN（Network In Network），把**卷积+
 
 - Inception v1 的网络，将 1x1，3x3，5x5 的 conv 和 3x3 的 pooling，stack 在一起，一方面增加了网络的width，另一方面增加了网络对尺度的适应性；采用 1x1 卷积核进行降维，降低了计算量，同时让信息通过更少的连接传递以达到更加稀疏的特性；
 
-![inception_v1](./reference image/inception_v1.png)
+<img src="./reference image/inception_v1.png"/>
 
 - v2 的网络在 v1 的基础上，进行了改进，一方面了加入了 BN 层，减少了 Internal  Covariate Shift（内部neuron 的数据分布发生变化），使每一层的输出都规范化到一个 N(0,  1) 的高斯，另外一方面学习 VGG 用 2 个 3x3 的 conv 替代 inception 模块中的 5x5，既降低了参数数量，也加速计算；
 
@@ -319,7 +319,7 @@ Inception 模块的基本思想源于 NIN（Network In Network），把**卷积+
 
 <img src="./reference image/inception_v3_conv.png" style="zoom:70%"/>
 
-​	35 降维可以理解为 1+9+25
+​	35 降维可以理解为 1+9+25（branch 结构，Filter Concat 拼合）
 
 <img src="./reference image/inception_v3_conv35.png" style="zoom:70%"/>
 
@@ -347,7 +347,7 @@ $F(x) = H(x)-x$ 对应值残差，因而叫残差网络。
 
 比较经典的 ResNet 一般是 3 中结构：即 50 层、101 层、152 层。
 
-![resnet](./reference image/resnet.png)
+<img src="./reference image/resnet.png"/>
 
 #### MobileNets
 
@@ -355,13 +355,13 @@ Google 针对手机等嵌入式设备提出的一种轻量级的深度神经网�
 
 核心思想就是卷积核的巧妙分解，可以有效减少网络参数。
 
-![mobilenets](./reference image/mobilenets.jpg)
+<img src="./reference image/mobilenets.jpg"/>
 
 分解一个标准的卷积为一个 depthwise convolutions 和一个 pointwise convolution。简单理解就是矩阵的因式分解。
 
 先进行空间的 3x3 卷积，再进行通道 1x1 的卷积。
 
-![depthwise_separable_convolutions](./reference image/depthwise_separable_convolutions.jpg)
+<img src="./reference image/depthwise_separable_convolutions.jpg"/>
 
 使用了大量的 3×3 的卷积核，极大地减少了计算量（1/8 到 1/9之间），同时准确率下降的很少，相比其他的方法确有优势。
 
@@ -381,7 +381,7 @@ Google 针对手机等嵌入式设备提出的一种轻量级的深度神经网�
 
 **系统架构**
 
-![meta](./reference image/meta.png)
+<img src="./reference image/meta.png"/>
 
 **输入：**采用命令行直接指定待识别文件的方式。
 
@@ -391,4 +391,4 @@ Google 针对手机等嵌入式设备提出的一种轻量级的深度神经网�
 
 屏幕打印型号及位置，型号不在范围内 -> “Unknown”，没有车打印“None”。并保存类似以下图片结果。
 
-![output](./reference image/output.png)
+<img src="./reference image/output.png"/>
