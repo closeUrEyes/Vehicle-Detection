@@ -54,7 +54,7 @@ Bounding-box 与肉眼识别的外框没有明显偏移
 
 第 7 周 InceptionV4 Finetune 作业。
 
-TensorFlow models/research/object_detection 里提到的物体检测 model zoo 预训练模型。
+第 8 周 TensorFlow models/research/object_detection 里提到的物体检测 model zoo 预训练模型。
 
 ## 2.	获取数据
 
@@ -62,7 +62,7 @@ TensorFlow models/research/object_detection 里提到的物体检测 model zoo �
 
 已从提供的百度云网盘链接下载所有训练和测试数据（TFRecord 格式）。
 
-共占用 5GB 存储空间。
+共占用 5GB 存储空间。其中训练集 4.5GB，测试集 500MB。以及 labels.txt。
 
 ### 2.2 数据格式的理解
 
@@ -127,6 +127,8 @@ with tf.Session() as sess:
 ### 3.2 对于监督学习任务，识别 the target attribute（s）
 
 TFRecord 中，'image/class/label' 即为图片的标签（型号）。
+
+查看 labels.txt，共 764 个分类即车型。
 
 ### 3.3 可视化数据
 
@@ -364,6 +366,8 @@ Google 针对手机等嵌入式设备提出的一种轻量级的深度神经网�
 <img src="./reference image/depthwise_separable_convolutions.jpg"/>
 
 使用了大量的 3×3 的卷积核，极大地减少了计算量（1/8 到 1/9之间），同时准确率下降的很少，相比其他的方法确有优势。
+
+<img src="./reference image/mobilenets_tbl.jpg" style="zoom:70%"/>
 
 ## 5.	项目方案规划
 
