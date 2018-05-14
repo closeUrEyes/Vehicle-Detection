@@ -39,7 +39,7 @@ if __name__ == '__main__':
     print('change wording dir to [{0}]'.format(w_d))
     os.chdir(w_d)
 
-    step_per_epoch = 50000 // FLAGS.batch_size
+    step_per_epoch = 43971 // FLAGS.batch_size
 
     if FLAGS.checkpoint_path:
         ckpt = ' --checkpoint_path=' + FLAGS.checkpoint_path

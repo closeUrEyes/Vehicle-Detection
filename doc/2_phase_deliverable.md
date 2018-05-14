@@ -19,6 +19,11 @@ GitHub 上建立项目，并用 git 管理。
 ## 2.2 模型训练
 
 - 训练过程出现的问题以及解决
+
+<img src="./reference image/err_dataset_name.png"/>
+
+<img src="./reference image/CPU_clone.png"/>
+
 - 训练过程可视化
   - loss 可视化
 
