@@ -18,7 +18,7 @@ def parse_args(check=True):
     parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--clone_on_cpu', type=bool, default=False)
     parser.add_argument('--optimizer', type=str, default='rmsprop')
-    parser.add_argument('--batch_size', type=int, default=32)
+    parser.add_argument('--batch_size', type=int, default=16)
 
     # eval
     parser.add_argument('--dataset_split_name', type=str, default='validation')
