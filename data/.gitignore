@@ -1,2 +1,3 @@
 train_set/
 validation_set/
+faster_rcnn_resnet101_lowproposals_coco_2017_11_08/
