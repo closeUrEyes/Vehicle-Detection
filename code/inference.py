@@ -12,7 +12,10 @@ from utils import label_map_util
 if tf.__version__ < '1.4.0':
     raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
 
-NUM_CLASSES = 5
+w_d = os.path.dirname(os.path.abspath(__file__))
+os.chdir(w_d)
+# COCO 数据集共 90 个分类
+NUM_CLASSES = 90
 
 
 def parse_args(check=True):
@@ -26,8 +29,8 @@ def parse_args(check=True):
 if __name__ == '__main__':
     FLAGS, unparsed = parse_args()
 
-    PATH_TO_CKPT = os.path.join(FLAGS.output_dir, 'exported_graphs/frozen_inference_graph.pb')
-    PATH_TO_LABELS = os.path.join(FLAGS.dataset_dir, 'labels_items.txt')
+    PATH_TO_CKPT = os.path.join(FLAGS.output_dir, 'faster_rcnn_resnet101_lowproposals_coco_2017_11_08/saved_model/saved_model.pb')
+    PATH_TO_LABELS = os.path.join(FLAGS.dataset_dir, 'mscoco_label_map.pbtxt')
 
     detection_graph = tf.Graph()
     with detection_graph.as_default():
