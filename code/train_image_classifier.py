@@ -48,7 +48,7 @@ tf.app.flags.DEFINE_integer(
     'are handled locally by the worker.')
 
 tf.app.flags.DEFINE_integer(
-    'num_readers', 1,
+    'num_readers', 4,
     'The number of parallel readers that read data from the dataset.')
 
 tf.app.flags.DEFINE_integer(
@@ -148,7 +148,7 @@ tf.app.flags.DEFINE_float(
     'Number of epochs after which learning rate decays.')
 
 tf.app.flags.DEFINE_bool(
-    'sync_replicas', False,
+    'sync_replicas', True,
     'Whether or not to synchronize the replicas during training.')
 
 tf.app.flags.DEFINE_integer(
