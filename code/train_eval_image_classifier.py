@@ -50,8 +50,8 @@ if __name__ == '__main__':
         # train 1 epoch
         print('################    train    ################')
         p = os.popen(train_cmd.format(**{'dataset_name': FLAGS.dataset_name, 'dataset_dir': FLAGS.dataset_dir,
-                                         'model_name': FLAGS. model_name,
-                                         'checkpoint_exclude_scopes': FLAGS.checkpoint_exclude_scopes, 'train_dir': FLAGS. train_dir,
+                                         'model_name': FLAGS.model_name,
+                                         'checkpoint_exclude_scopes': FLAGS.checkpoint_exclude_scopes, 'train_dir': FLAGS.train_dir,
                                          'learning_rate': FLAGS.learning_rate, 'optimizer': FLAGS.optimizer,
                                          'batch_size': FLAGS.batch_size, 'max_number_of_steps': steps, 'clone_on_cpu': FLAGS.clone_on_cpu}) + ckpt)
         for l in p:
@@ -60,8 +60,8 @@ if __name__ == '__main__':
         # eval
         print('################    eval    ################')
         p = os.popen(eval_cmd.format(**{'dataset_name': FLAGS.dataset_name, 'dataset_dir': FLAGS.dataset_dir,
-                                        'dataset_split_name': 'validation', 'model_name': FLAGS. model_name,
+                                        'dataset_split_name': 'validation', 'model_name': FLAGS.model_name,
                                         'checkpoint_path': FLAGS.train_dir, 'batch_size': FLAGS.batch_size,
-                                        'eval_dir': FLAGS. eval_dir, 'max_num_batches': FLAGS. max_num_batches}))
+                                        'eval_dir': FLAGS.eval_dir, 'max_num_batches': FLAGS.max_num_batches}))
         for l in p:
             print(p.strip())

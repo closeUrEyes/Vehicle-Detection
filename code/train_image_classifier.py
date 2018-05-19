@@ -148,7 +148,7 @@ tf.app.flags.DEFINE_float(
     'Number of epochs after which learning rate decays.')
 
 tf.app.flags.DEFINE_bool(
-    'sync_replicas', True,
+    'sync_replicas', False,
     'Whether or not to synchronize the replicas during training.')
 
 tf.app.flags.DEFINE_integer(

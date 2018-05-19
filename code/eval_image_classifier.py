@@ -53,7 +53,7 @@ tf.app.flags.DEFINE_string(
     'dataset_name', 'imagenet', 'The name of the dataset to load.')
 
 tf.app.flags.DEFINE_string(
-    'dataset_split_name', 'test', 'The name of the train/test split.')
+    'dataset_split_name', 'validation', 'The name of the train/test split.')
 
 tf.app.flags.DEFINE_string(
     'dataset_dir', None, 'The directory where the dataset files are stored.')

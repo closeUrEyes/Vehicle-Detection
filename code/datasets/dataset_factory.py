@@ -32,7 +32,7 @@ datasets_map = {
     'imagenet': imagenet,
     'mnist': mnist,
     'pj_vehicle': pj_vehicle,
-}
+    }
 
 
 def get_dataset(name, split_name, dataset_dir, file_pattern=None, reader=None):
