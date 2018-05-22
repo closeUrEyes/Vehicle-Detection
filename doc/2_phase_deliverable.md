@@ -24,6 +24,16 @@ GitHub 上建立项目，并用 git 管理。
 
 <img src="./reference image/CPU_clone.png"/>
 
+code/train_eval_image_classifier.py
+
+pj_vehicle
+
+![](/home/parallels/workspace/Vehicle-Detection/doc/reference image/update dataset.png)
+
+![](/home/parallels/workspace/Vehicle-Detection/doc/reference image/warning1.png)
+
+
+
 - 训练过程可视化
   - loss 可视化
 
