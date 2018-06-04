@@ -1,3 +1,4 @@
 ckpt/
 faster_rcnn_resnet101_lowproposals_coco_2017_11_08.pb
+pj_vehicle_inception_v4.pb
 pj_vehicle_inception_v4_freeze.pb
